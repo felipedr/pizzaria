@@ -1,2 +1,2 @@
-# pizzaria
+# Pizzaria
  Pizzaria do ThiagaoValdemarin
