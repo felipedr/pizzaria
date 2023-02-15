@@ -1,0 +1,26 @@
+{
+  "name": "pizzaria",
+  "version": "1.0.0",
+  "description": "Pizzaria do ThiagaoValdemarin",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipedr/pizzaria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipedr/pizzaria/issues"
+  },
+  "homepage": "https://github.com/felipedr/pizzaria#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "config": "^3.2.3",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.20"
+  }
+}

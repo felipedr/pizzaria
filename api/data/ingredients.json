@@ -1,0 +1,24 @@
+{
+  "ingredients": {
+    "data": [
+      {
+        "id": "1",
+        "name": "Catupiry",
+        "valor": 3.00,
+        "podeSerAdicional": true
+      },
+      {
+        "id": "2",
+        "name": "Molho de tomate",
+        "valor": 0,
+        "podeSerAdicional": false
+      },
+      {
+        "id": "3",
+        "name": "Mussarela",
+        "valor": 2.00,
+        "podeSerAdicional": true
+      }
+    ]
+  }
+}
