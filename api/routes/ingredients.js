@@ -1,5 +1,8 @@
 module.exports = app => {
-  const controller = require('../controllers/ingredients')();
+  const ingredientsController = app.controllers.ingredients;
 
-  app.route('/api/ingredients').get(controller.listIngredients);
+  app.route('/api/listar_ingredientes').get(ingredientsController.listIngredients);
+  app.route('/api/adicionar_ingrediente').post(ingredientsController.addIngredient);
+  app.route('/api/deletar_ingrediente').delete(ingredientsController.deleteIngredient);
+  app.route('/api/update_ingrediente').patch(ingredientsController.updateIngredient);
 }

@@ -27,9 +27,7 @@ create table ingredientes(
 	id SERIAL PRIMARY KEY,
 	nome VARCHAR(50) NOT NULL,
 	adicional BOOLEAN NOT NULL,
-	valor DECIMAL NOT NULL,
-	produto_ingrediente_id INTEGER NOT NULL,
-	ingredientes_adicionais_id INTEGER NOT NULL
+	valor DECIMAL NOT NULL
 );
 
 create table produtos_ingredientes(
