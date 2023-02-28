@@ -21,11 +21,11 @@ npm start
 
 ## Como criar o CRUD de produto
 
-1 - Dentro da pasta `/routes` crie um novo arquivo para as rotas de produto
-2 - Dentro da pasta `/controllers` crie um novo arquivo para o controller de produto
-3 - Dentro do novo arquivo na pasta `/routes`, crie as 4 rotas (listagem, criar, update e delete) e
+- Dentro da pasta `/routes` crie um novo arquivo para as rotas de produto
+- Dentro da pasta `/controllers` crie um novo arquivo para o controller de produto
+- Dentro do novo arquivo na pasta `/routes`, crie as 4 rotas (listagem, criar, update e delete) e
 direcione cada uma das rotas para metodos do novo controller de produto criado no passo 2
-4 - Dentro do novo controller de produto, crie os 4 metodos chamados pelas novas rotas.
+- Dentro do novo controller de produto, crie os 4 metodos chamados pelas novas rotas.
 
 Nota: Tanto o novo arquivo de rotas quanto o novo controller devem ficar parecidos com o que já
 fizemos para os ingredientes, mudando apenas os nomes e o controller na rota e os nomes e as queries
