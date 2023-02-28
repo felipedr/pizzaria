@@ -6,6 +6,7 @@
 
 ## Inicialização do sistema
 - Para criar o BD, rode o arquivo `/db/schema.sql` no seu banco de dados.
+- Coloque os dados do seu banco de dados no arquivo `api/db/client.js`
 - No terminal, vá até a pasta do projeto e execute:
 
 ```
