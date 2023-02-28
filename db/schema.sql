@@ -47,9 +47,7 @@ create table produtos(
 	nome VARCHAR(50) NOT NULL,
 	preco DECIMAL NOT NULL,
 	categoria VARCHAR(30) NOT NULL,
-	tamanho VARCHAR(15) NOT NULL,
-	pedido_produto_id INTEGER NOT NULL,
-	produto_ingrediente_id INTEGER NOT NULL
+	tamanho VARCHAR(15) NOT NULL
 );
 
 create table pedidos(
@@ -71,9 +69,7 @@ create table pedidos_produtos(
 	pedido_id INTEGER NOT NULL
 );
 
-ALTER TABLE ingredientes ADD CONSTRAINT fk_ingredientes_adicionais FOREIGN KEY (ingredientes_adicionais_id) REFERENCES ingredientes_adicionais (id);
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_endereco FOREIGN KEY (endereco_id) REFERENCES enderecos (id);
-ALTER TABLE produtos ADD CONSTRAINT fk_produto_pedido_produto FOREIGN KEY (pedido_produto_id) REFERENCES pedidos_produtos (id);
 ALTER TABLE pedidos_produtos ADD CONSTRAINT fk_pedido_produto_1 FOREIGN KEY (produto_1_id) REFERENCES produtos (id);
 ALTER TABLE pedidos_produtos ADD CONSTRAINT fk_pedido_produto_2 FOREIGN KEY (produto_2_id) REFERENCES produtos (id);
 ALTER TABLE pedidos_produtos ADD CONSTRAINT fk_pedido_pedido_produto FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
