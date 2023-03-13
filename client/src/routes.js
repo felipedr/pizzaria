@@ -6,6 +6,8 @@ import {
 
 import ListagemIngredientes from "./ingredients/ListagemIngredientes";
 import FormIngredientes from "./ingredients/FormIngredientes";
+import ListagemProdutos from "./products/ListagemProdutos";
+import FormProdutos from "./products/FormProdutos";
 import Home from "./site/Home";
 
 const router = createBrowserRouter([
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: "/ingredientes/adicionar",
     element: <FormIngredientes />,
+  },
+  {
+    path: "/produtos",
+    element: <ListagemProdutos />,
+  },
+  {
+    path: "/produtos/adicionar",
+    element: <FormProdutos />,
   },
 ]);
 
