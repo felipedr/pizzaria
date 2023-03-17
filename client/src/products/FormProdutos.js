@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 
 function FormProdutos() {
 
   const [valores, setValores] = useState(
     {
+      id: null,
       nome: '',
-      adicional: false,
-      valor: 0
+      preco: 0,
+      categoria: '',
+      tamanho: ''
     }
   )
+
+  let { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/listar_produto?id=${id}`)
+      .then((res) => res.json())
+      .then((data) => data[0] && setValores(data[0]))
+    }
+  }, [])
 
   const handleNameChange = (event) => {
     setValores({ ...valores, nome: event.target.value });
@@ -32,7 +45,7 @@ function FormProdutos() {
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
-
+    if (!valores.id) {
     fetch('/api/adicionar_produto', {
       method: 'POST', 
       body: JSON.stringify(valores),
@@ -41,6 +54,16 @@ function FormProdutos() {
     .finally((res) => {
       window.location='/produtos'
     })
+  } else { 
+    fetch('/api/update_produto', {
+      method: 'PATCH', 
+      body: JSON.stringify(valores),
+      headers: myHeaders
+    })
+    .finally((res) => {
+      window.location='/produtos'
+    })
+    }                                       
   }
 
   return (
