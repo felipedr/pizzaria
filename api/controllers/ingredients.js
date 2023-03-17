@@ -16,6 +16,10 @@ module.exports = app => {
     execute('SELECT * FROM ingredientes', response)
   }
 
+  controller.listIngredient = (req, response) => {
+    execute(`SELECT * FROM ingredientes WHERE id='${req.query.id}'`, response)
+  }
+
   controller.addIngredient = (req, response) => {
     execute(`INSERT INTO ingredientes (nome, adicional, valor)
       VALUES ('${req.body.nome}', ${req.body.adicional}, ${req.body.valor})`, response)

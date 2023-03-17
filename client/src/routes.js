@@ -24,12 +24,8 @@ const router = createBrowserRouter([
     element: <FormIngredientes />,
   },
   {
-    path: "/produtos",
-    element: <ListagemProdutos />,
-  },
-  {
-    path: "/produtos/adicionar",
-    element: <FormProdutos />,
+    path: "/ingredientes/editar/:id",
+    element: <FormIngredientes />,
   },
 ]);
 
