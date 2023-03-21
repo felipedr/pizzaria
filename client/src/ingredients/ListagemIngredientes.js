@@ -45,7 +45,7 @@ function ListagemIngredientes() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow>
+            <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.nome}</TableCell>
               <TableCell>{row.adicional ? 'Sim' : 'Não'}</TableCell>

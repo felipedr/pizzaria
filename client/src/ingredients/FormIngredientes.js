@@ -67,7 +67,7 @@ function FormIngredientes() {
       <label>
         Nome
         <br/>
-        <input type="text" maxlength={30} value={valores.nome} onChange={handleNameChange} required={true}/>
+        <input type="text" maxLength={30} value={valores.nome} onChange={handleNameChange} required={true}/>
       </label>
       <br/>
       <label>
