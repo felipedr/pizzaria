@@ -16,6 +16,10 @@ module.exports = app => {
     execute('SELECT * FROM produtos', response)
   }
 
+  controller.listProduct = (req, response) => {
+    execute(`SELECT * FROM produtos WHERE id='${req.query.id}'`, response)
+  }
+
   controller.addProduct = (req, response) => {
     execute(`INSERT INTO produtos (nome, preco, categoria, tamanho)
       VALUES ('${req.body.nome}', ${req.body.preco}, '${req.body.categoria}', '${req.body.tamanho}')`, response)
