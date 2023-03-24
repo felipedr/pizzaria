@@ -77,3 +77,14 @@ ALTER TABLE ingredientes_adicionais ADD CONSTRAINT fk_ingredientes_adicionais_pe
 ALTER TABLE ingredientes_adicionais ADD	CONSTRAINT fk_ingredientes_adicionais_ingrediente FOREIGN KEY (ingrediente_id) REFERENCES ingredientes (id);
 ALTER TABLE produtos_ingredientes ADD CONSTRAINT fk_produto_ingrediente_produto FOREIGN KEY (produto_id) REFERENCES produtos (id);
 ALTER TABLE produtos_ingredientes ADD CONSTRAINT fk_produto_ingrediente_ingrediente FOREIGN KEY (ingrediente_id) REFERENCES ingredientes (id);
+ALTER TABLE produtos DROP COLUMN tamanho;
+ALTER TABLE produtos DROP COLUMN preco;
+
+create table produto_tamanho_preco(
+	id SERIAL PRIMARY KEY,
+	produto_id INTEGER NOT NULL,
+	preco DECIMAL NOT NULL,
+	tamanho VARCHAR(15) NOT NULL
+);
+
+ALTER TABLE produto_tamanho_preco ADD CONSTRAINT fk_produto_produto_tamanho_preco FOREIGN KEY (produto_id) REFERENCES produtos (id);

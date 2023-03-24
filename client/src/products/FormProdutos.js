@@ -3,13 +3,18 @@ import { useParams } from "react-router-dom";
 
 function FormProdutos() {
 
+  const categoriaTamanhos = {
+    'pizza': ['broto', 'normal', 'familia'],
+    'refrigerante': ['lata', '600ml', '2l'],
+    'outros': ['unico']
+  }
+
   const [valores, setValores] = useState(
     {
       id: null,
       nome: '',
-      preco: 0,
-      categoria: '',
-      tamanho: ''
+      categoria: 'pizza',
+      produto_tamanho_preco: categoriaTamanhos['pizza'].map(tamanho => ({ tamanho: tamanho, valor: 0 }))
     }
   )
 
@@ -28,15 +33,26 @@ function FormProdutos() {
   }
 
   const handlePrecoChange = (event) => {
-    setValores({ ...valores, preco: event.target.value });
+    const tamanho = event.target.getAttribute("tamanho")
+    setValores({ 
+      ...valores,
+      produto_tamanho_preco: valores.produto_tamanho_preco.map(produto_tamanho => {
+        if (produto_tamanho.tamanho !== tamanho) {
+          return produto_tamanho;
+        }
+        return { tamanho: tamanho, valor: event.target.value }
+      })
+    });
   }
 
   const handleCategoriaChange = (event) => {
-    setValores({ ...valores, categoria: event.target.value });
-  }
-
-  const handleTamanhoChange = (event) => {
-    setValores({ ...valores, tamanho: event.target.value });
+    let categoria = event.target.value
+    let tamanhos = categoriaTamanhos[categoria]
+    setValores({ 
+      ...valores,
+      categoria: categoria,
+      produto_tamanho_preco: tamanhos.map(tamanho => ({ tamanho: tamanho, valor: 0 }))
+    });
   }
 
   const handleSubmit = (event) => {
@@ -45,24 +61,25 @@ function FormProdutos() {
     const myHeaders = new Headers({
       "Content-Type": "application/json"
     });
+
     if (!valores.id) {
-    fetch('/api/adicionar_produto', {
-      method: 'POST', 
-      body: JSON.stringify(valores),
-      headers: myHeaders
-    })
-    .finally((res) => {
-      window.location='/produtos'
-    })
-  } else { 
-    fetch('/api/update_produto', {
-      method: 'PATCH', 
-      body: JSON.stringify(valores),
-      headers: myHeaders
-    })
-    .finally((res) => {
-      window.location='/produtos'
-    })
+      fetch('/api/adicionar_produto', {
+        method: 'POST', 
+        body: JSON.stringify(valores),
+        headers: myHeaders
+      })
+      .finally((res) => {
+        window.location='/produtos'
+      })
+    } else { 
+      fetch('/api/update_produto', {
+        method: 'PATCH', 
+        body: JSON.stringify(valores),
+        headers: myHeaders
+      })
+      .finally((res) => {
+        window.location='/produtos'
+      })
     }                                       
   }
 
@@ -71,26 +88,33 @@ function FormProdutos() {
       <label>
         Nome
         <br/>
-        <input type="text" maxlength={30} value={valores.nome} onChange={handleNameChange} required={true}/>
+        <input type="text" maxLength={30} value={valores.nome} onChange={handleNameChange} required={true}/>
       </label>
       <br/>
-      <label>
-        Preço
-        <br/>
-        <input type="number"  value={valores.preco} onChange={handlePrecoChange}/>
-      </label>
-      <br/>
+      {}
       <label>
         Categoria
         <br/>
-        <input type="text" maxlength={30} value={valores.categoria} onChange={handleCategoriaChange}/>
+        <select maxlength={30} value={valores.categoria} onChange={handleCategoriaChange}>
+          {Object.entries(categoriaTamanhos).map((categoria) => (
+            <option value={categoria[0]}>{categoria[0]}</option>
+          ))}
+        </select>
       </label>
       <br/>
-      <label>
-        Tamanho
-        <br/>
-        <input type="text" maxlength={30} value={valores.tamanho} onChange={handleTamanhoChange}/>
-      </label>
+      {valores.produto_tamanho_preco.map((tamanho_preco, index) => (
+        <div>
+          <label>
+            Tamanho
+            <input type="text" readOnly value={tamanho_preco.tamanho}/>
+          </label>
+          <label>
+            Preço {tamanho_preco.tamanho}
+            <input type="number" value={tamanho_preco.preco} tamanho={tamanho_preco.tamanho} onChange={handlePrecoChange}/>
+          </label>
+          <br/>
+        </div>
+      ))}
       <br/>
       <input type="submit" value="Enviar" />
       <a href="/produtos"><input type="button" value="Voltar" /></a>
