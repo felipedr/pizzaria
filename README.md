@@ -35,4 +35,5 @@ Nota2: Para testar o que está sendo feito, usar o [Postman](https://www.postman
 
 ## BD
 
-<img width="949" alt="Screen Shot 2023-02-07 at 20 56 40" src="https://user-images.githubusercontent.com/9625734/217394083-70003327-c796-4c89-b880-c4aaec0caacd.png">
+![DesenhoBancoPizzariaV1 (1)](https://user-images.githubusercontent.com/9625734/227390565-749768db-ebca-4038-a373-c3d62fd2ecc5.png)
+
